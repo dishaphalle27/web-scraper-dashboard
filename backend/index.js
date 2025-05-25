@@ -4,7 +4,9 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 
 const app = express();
-const PORT = 5000;
+
+// Only keep this one PORT line
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
@@ -35,6 +37,6 @@ app.get('/scrape', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
 
