@@ -5,10 +5,12 @@ const cors = require('cors');
 
 const app = express();
 
-// Only keep this one PORT line
-const PORT = process.env.PORT || 5000;
-
-app.use(cors());
+// ✅ Add your updated CORS config here
+app.use(cors({
+  origin: 'https://web-scraper-dashboard.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
 
 // Root route
 app.get('/', (req, res) => {
@@ -36,7 +38,10 @@ app.get('/scrape', async (req, res) => {
   }
 });
 
+// Use Render's dynamic port or 5000 locally
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
