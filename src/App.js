@@ -7,7 +7,7 @@ function App() {
   const fetchBooks = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://web-scraper-backend.onrender.com/scrape'); // backend API URL
+      const response = await fetch('https://web-scraper-dashboard.onrender.com/scrape'); // backend API URL
       const data = await response.json();
       setBooks(data);
     } catch (error) {
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>Book Titles and Prices</h1>
+      <h1>📚 Book Titles and Prices</h1>
       <button onClick={fetchBooks} disabled={loading}>
         {loading ? 'Loading...' : 'Scrape Now'}
       </button>
