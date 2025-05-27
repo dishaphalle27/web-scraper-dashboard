@@ -1,7 +1,9 @@
+
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cors = require('cors');
+const rateLimit = require('express-rate-limit')
 
 const app = express();
 
@@ -11,6 +13,15 @@ app.use(cors({
   methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true
 }));
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 5,              // limit each IP to 5 requests per minute
+  message: '🚫 Too many requests. Please try again later.',
+});
+
+// Apply rate limiter only to the /scrape route
+app.use('/scrape', limiter);
+
 
 // Root route
 app.get('/', (req, res) => {
