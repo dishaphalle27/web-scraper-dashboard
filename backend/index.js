@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit')
 
 const app = express();
 
-// ✅ Add your updated CORS config here
+// ✅ Add your updated CORS config heresss
 app.use(cors({
   origin: 'https://web-scraper-dashboard.vercel.app',
   methods: ['GET', 'POST', 'OPTIONS'],
